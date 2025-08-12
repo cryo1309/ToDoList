@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>todolist</title>
+  <link rel="icon" href="e:\javascript\ToDoList\img\clipart4223379.png">
+
+
+  <style>
+    .my {
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-left: 10px;
+    }
+
+    .title {
+      position: fixed;
+      top: 20px;
+      left: 30px;
+      color: white;
+      font-family: 'Lucida Console', monospace;
+      font-size: 58px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-image: url('E:/javascript/ToDoList/img/illustration-anime-city.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Lucida Console', monospace;
+      color: white;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      text-align: center;
+      min-width: 300px;
+      max-width: 600px;
+      margin: 100px auto;
+    }
+
+    .task1 {
+      font-family: Tahoma, sans-serif;
+      font-size: 16px;
+      color: #333;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+      padding: 10px;
+      border: 2px solid #aaa;
+      border-radius: 8px;
+    }
+
+    .my:hover {
+      background: #e60000;
+    }
+
+    input[type="text"], input[type="task"], input {
+      width: 300px;
+      padding: 10px 15px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      transition: all 0.3s ease;
+      outline: none;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    input:focus {
+      border-color: #6e8efb;
+      box-shadow: 0 0 8px rgba(110, 142, 251, 0.6);
+    }
+
+    input::placeholder {
+      font-family: 'Lucida Console', monospace;
+    }
+
+    li {
+      list-style: none;
+      margin: 10px 0;
+    }
+
+    .task {
+      background: linear-gradient(135deg, #F34E82, #c9b1b8);
+      color: rgb(255, 255, 255);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .task:hover {
+      background: linear-gradient(135deg, #406498, #305484);
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    ul {
+      padding: 0;
+      margin-bottom: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="title">To-Do List</h1>
+
+  <div class="container">
+    <button class="task" onclick="addtask()">Add Task</button>
+    <input type="text" id="task" class="task1" placeholder="Enter a task">
+
+    <ul id="taskList">
+      <li>
+        hello
+        <button class="my" onclick="deletet(event)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</body>
+
+  <script>
+    var taskip = document.getElementById("task");
+    var ul = document.getElementById("taskList");
+
+    function addtask() {
+      if (taskip.value.trim() === "") return; // Prevent empty task
+
+      var newList = document.createElement("li");
+      newList.innerHTML = taskip.value + " <button class='my' onclick='deletet(event)'>Delete</button>";
+
+      // var deleteBtn = document.createElement("button");
+      // deleteBtn.textContent = "Delete";
+      // deleteBtn.className = "my";
+      // deleteBtn.onclick = function(event) {
+      //   deletet(event);
+      // };
+
+      // newList.append(deleteBtn);
+      ul.append(newList);
+
+      taskip.value = ""; // Clear input after adding
+    }
+
+    function deletet(event) {
+      event.target.parentNode.remove();
+    }
+  </script>
+
+</html>
